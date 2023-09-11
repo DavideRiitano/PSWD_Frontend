@@ -1,0 +1,50 @@
+<div *ngIf="datiCaricati">
+  <div *ngIf="ordini.length === 0 then ordiniVuoto else ordiniPresenti"></div>
+
+  <ng-template #ordiniPresenti>
+    <div style="text-align: center;">
+      <div *ngFor="let ordine of ordini">
+
+        <h3>ID: {{ordine.id}}</h3>
+        <h3>Data: {{ordine.data}}</h3>
+        <h3>Totale: {{ordine.totale}}</h3>
+        <h3>Indirizzo: {{ordine.spedizione.indirizzo}}</h3>
+
+        <div *ngIf="ordine.isSpedito() then spedito else notSpedito"></div>
+
+        <ng-template #spedito>
+          <p>Ordine già spedito</p>
+        </ng-template>
+
+        <ng-template #notSpedito>
+          <button mat-button style="background-color: blueviolet;" (click)="segnaSpedito(ordine.getId())">Segna come spedito</button>
+        </ng-template>
+
+        <div *ngIf="showProducts(); then mostra else nascondi"></div>
+
+        <ng-template #mostra>
+          <div *ngFor="let prodotto of prodotti.get(ordine)">
+            <p>Id: {{prodotto.getProdotto().id}}</p>
+            <p>Nome: {{prodotto.getProdotto().nome}}</p>
+            <p>Marca: {{prodotto.getProdotto().marca}}</p>
+            <p>Categoria: {{prodotto.getProdotto().categoria}}/p>
+            <p>Quantita: {{prodotto.quantita}}</p>
+          </div>
+
+          <button mat-button style="background-color: blueviolet;" (click)="mostraNascondi()">Nascondi prodotti</button>
+        </ng-template>
+
+        <ng-template #nascondi>
+          <button mat-button style="background-color: blueviolet;" (click)="mostraNascondi()">Mostra prodotti</button>
+        </ng-template>
+
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #ordiniVuoto>
+    <h2 style="color: black; text-align: center;">Non sono presenti ordini!</h2>
+  </ng-template>
+
+</div>
+

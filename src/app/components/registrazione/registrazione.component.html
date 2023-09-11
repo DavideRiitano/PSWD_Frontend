@@ -1,0 +1,36 @@
+<div class="container">
+  <form style="text-align: center;" [formGroup]="formDati">
+
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" formControlName="nome">
+    </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Cognome</mat-label>
+      <input matInput type="text" formControlName="cognome">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </form>
+
+  <button mat-button style="background-color: blueviolet;" (click)="registraUser()">Registrati</button>
+
+</div>

@@ -1,0 +1,30 @@
+<div style="text-align: center;">
+  <div *ngIf="datiCaricati">
+    <form style="text-align: center;" [formGroup]="formDati">
+
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" placeholder="{{utente.username}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome" placeholder="{{utente.nome}}">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Cognome</mat-label>
+        <input matInput type="text" formControlName="cognome" placeholder="{{utente.cognome}}">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="{{utente.email}}">
+      </mat-form-field>
+
+    </form>
+
+    <button mat-button style="background-color: blueviolet;" (click)="salva()">Salva</button>
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div *ngIf="datiCaricati && !isCarrelloVuoto() then carrelloPieno else carrelloVuoto"></div>
+
+<ng-template #carrelloPieno>
+
+  <div style="text-align: center;" *ngIf="datiCaricati">
+    <div style="text-align: center;" *ngFor="let prodotto of getProdottiCarrello()">
+
+      <mat-card style="max-width: 400px;">
+
+        <mat-card-header>
+          <mat-card-title> {{prodotto.getProdotto().nome}} </mat-card-title>
+          <mat-card-subtitle>
+            <p>{{prodotto.getProdotto().marca}}, {{prodotto.getProdotto().categoria}}</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-divider></mat-divider>
+          <p>{{prodotto.getProdotto().descrizione}}</p>
+          <mat-divider></mat-divider>
+          <p>{{prodotto.getProdotto().prezzo}} euro</p>
+          <mat-divider></mat-divider>
+          <p>Quantita: {{prodotto.quantita}}</p>
+        </mat-card-content>
+
+        <button mat-button style="background-color: blueviolet;" (click)="rimuoviProdotto(prodotto)">Cancella</button>
+
+      </mat-card>
+
+    </div>
+
+    <p>Num. articoli: {{carrello.totArticoli}}</p>
+    <p>Totale: {{carrello.totale}}€</p>
+
+    <button mat-button style="background-color: blueviolet;" (click)="ordina()">Ordina</button>
+    <span style="padding: 1%;"></span>
+    <button mat-button style="background-color: blueviolet;" (click)="svuotaCarrello()">Svuota</button>
+
+  </div>
+</ng-template>
+
+<ng-template #carrelloVuoto>
+  <p>Carrello vuoto!</p>
+</ng-template>
+
+<router-outlet></router-outlet>

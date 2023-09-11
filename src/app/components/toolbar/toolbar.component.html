@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <mat-toolbar-row style="padding-left: 45%; text-align: center;">
+    <p style="font-size: 40px;">MiniStore</p>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <div class="button-row">
+      <button mat-button routerLink="home"><p style="font-size: 20px;">Home</p></button>
+      <button mat-button routerLink="categorie"><p style="font-size: 20px;">Categorie</p></button>
+      <button mat-button routerLink="about"><p style="font-size: 20px;">About</p></button>
+    </div>
+
+    <span class="spacer"></span>
+
+    <div>
+      <button mat-button routerLink="cart">
+        <mat-icon style="color: white;">shopping_cart</mat-icon>
+      </button>
+
+      <span style="padding: 10px;"></span>
+
+      <button mat-button routerLink="manager">
+        <mat-icon style="color: white;">account_circle</mat-icon>
+      </button>
+
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <p align="center" style="font-size: 20px;"><b>Progetto Piattaforme Web di: Davide Riitano</b></p>
+</footer>

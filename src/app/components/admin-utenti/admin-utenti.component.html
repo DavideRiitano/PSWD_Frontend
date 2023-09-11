@@ -1,0 +1,35 @@
+<div style="text-align: center;">
+
+  <div *ngIf="datiCaricati">
+    <div *ngFor="let utente of utenti">
+
+      <mat-card>
+        <mat-card-header>{{utente.username}}</mat-card-header>
+        <mat-card-subtitle>{{utente.nome}} {{utente.cognome}}</mat-card-subtitle>
+
+        <div *ngIf="showOrdini then mostra else nonMostrare"></div>
+
+        <ng-template #mostra>
+          <div *ngFor="let ordine of ordini.get(utente)">
+
+            <h3>ID: {{ordine.id}}</h3>
+            <h3>Data: {{ordine.data}}</h3>
+            <h3>Totale: {{ordine.totale}}</h3>
+            <h3>Indirizzo: {{ordine.spedizione.indirizzo}}</h3>
+
+          </div>
+
+          <button mat-button style="background-color: blueviolet;" (click)="mostraOrdini()">Nascondi ordini</button>
+
+        </ng-template>
+
+        <ng-template #nonMostrare>
+          <button mat-button style="background-color: blueviolet;" (click)="mostraOrdini()">Mostra ordini</button>
+        </ng-template>
+
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>

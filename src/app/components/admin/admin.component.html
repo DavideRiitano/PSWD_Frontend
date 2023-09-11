@@ -1,0 +1,20 @@
+<h2>
+  Pannello di controllo dell'amministratore
+</h2>
+<p>Scegliere un'opzione dalla barra laterale</p>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened>
+    <mat-list>
+      <mat-list-item style="background-color: blueviolet;" (click)="naviga('admin/users')">Utenti</mat-list-item>
+      <mat-list-item style="background-color: blueviolet;" (click)="naviga('admin/prodotti')">Prodotti</mat-list-item>
+      <mat-list-item style="background-color: blueviolet;" (click)="naviga('admin/ordini')">Ordini</mat-list-item>
+      <mat-list-item style="background-color: blueviolet;" (click)="naviga('home')">Home</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-card-content>
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-sidenav-container>
+

@@ -1,0 +1,45 @@
+<div class="center-div">
+  <div *ngIf="datiCaricati && utenteCaricato">
+
+    <h4>{{this.utente.toString()}}</h4>
+
+    <button mat-button style="background-color: blueviolet;" (click)="naviga()">Modifica dati</button>
+
+    <div *ngIf="!isOrdiniVuoto() then ordiniPresenti else ordiniNonPresenti"></div>
+
+      <ng-template #ordiniPresenti>
+        <h3>Ordini effettuati:</h3>
+        <div *ngFor="let ordine of ordini">
+          <h3>ID: {{ordine.id}}</h3>
+          <h3>Data: {{ordine.data}}</h3>
+          <h3>Totale: {{ordine.totale}}</h3>
+          <h3>Indirizzo: {{ordine.spedizione.indirizzo}}</h3>
+
+          <div *ngIf="showProducts(); then mostra else nascondi"></div>
+
+          <ng-template #mostra>
+            <div *ngFor="let prodotto of prodotti.get(ordine)">
+              <p>Id: {{prodotto.getProdotto().id}}</p>
+              <p>Nome: {{prodotto.getProdotto().nome}}</p>
+              <p>Marca: {{prodotto.getProdotto().marca}}</p>
+              <p>Categoria: {{prodotto.getProdotto().categoria}}/p>
+              <p>Quantita: {{prodotto.quantita}}</p>
+            </div>
+
+            <button mat-button style="background-color: blueviolet;" (click)="mostraNascondi()">Nascondi prodotti</button>
+          </ng-template>
+
+          <ng-template #nascondi>
+            <button mat-button style="background-color: blueviolet;" (click)="mostraNascondi()">Mostra prodotti</button>
+          </ng-template>
+
+        </div>
+      </ng-template>
+
+      <ng-template #ordiniNonPresenti>
+        <h2>Non sono stati effettuati ordini.</h2>
+      </ng-template>
+
+  </div>
+</div>
+

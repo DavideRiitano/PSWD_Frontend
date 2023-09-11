@@ -1,0 +1,82 @@
+<div class="center-div">
+  <div *ngIf="datiCaricati">
+    <div *ngFor="let prodotto of prodotti" style="padding: 1%">
+
+      <mat-card>
+
+        <mat-card-header>
+          <mat-card-title> {{prodotto.nome}} </mat-card-title>
+          <mat-card-subtitle>
+            <p>{{prodotto.marca}}, {{prodotto.categoria}}</p>
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <mat-divider></mat-divider>
+          <p>{{prodotto.descrizione}}</p>
+          <mat-divider></mat-divider>
+          <p>{{prodotto.prezzo}} euro</p>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+
+      </mat-card>
+
+      <button mat-button style="background-color: blueviolet;" (click)="elimina(prodotto.id)">Elimina</button>
+      <span style="padding: 1%;"></span>
+      <div>
+        <p>Quantità attuale: {{prodotto.quantita}}</p>
+        <span style="padding: 1%"></span>
+        <button mat-button style="background-color: blueviolet;" (click)="updateQuantPiu1(prodotto.id)">+1</button>
+        <span style="padding: 1%"></span>
+        <button mat-button style="background-color: blueviolet;" (click)="updateQuantMeno1(prodotto.id)">-1</button>
+      </div>
+
+      <div *ngIf="modificaFlag then mostra else nonMostrare"></div>
+
+      <ng-template #nonMostrare>
+        <button mat-button style="background-color: blueviolet;" (click)="mostraFormModifica()">Modifica</button>
+      </ng-template>
+
+      <ng-template #mostra>
+        <button mat-button style="background-color: blueviolet;" (click)="mostraFormModifica()">Nascondi</button>
+
+        <form formGroupName="formModifica">
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" placeholder="Attuale: {{prodotto.nome}}" formControlName="nome"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Marca</mat-label>
+            <input matInput type="text" placeholder="Attuale: {{prodotto.marca}}" formControlName="marca"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <input matInput type="text" placeholder="Attuale: {{prodotto.nome}}" formControlName="categoria"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Prezzo</mat-label>
+            <input matInput type="number" placeholder="Attuale: €{{prodotto.prezzo}}" formControlName="prezzo"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Quanità</mat-label>
+            <input matInput type="number" placeholder="Attuale: {{prodotto.quantita}}" formControlName="quantita"/>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Descrizione</mat-label>
+            <input matInput type="text" formControlName="descrizione"/>
+          </mat-form-field>
+
+        </form>
+
+        <button mat-button style="background-color: blueviolet;" (click)="updateProdotto(prodotto.id)">Aggiorna info</button>
+
+      </ng-template>
+
+    </div>
+  </div>
+</div>

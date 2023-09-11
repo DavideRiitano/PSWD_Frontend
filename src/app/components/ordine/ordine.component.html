@@ -1,0 +1,69 @@
+<mat-stepper linear="true" #stepper>
+
+  <mat-step [stepControl]="spedizioneForm">
+    <form style="text-align: center;" [formGroup]="spedizioneForm">
+      <ng-template matStepLabel>Info spedizione</ng-template>
+
+      <mat-form-field>
+        <mat-label>Indirizzo</mat-label>
+        <input matInput type="text" formControlName="indirizzo">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Comune</mat-label>
+        <input matInput type="text" formControlName="comune">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cap</mat-label>
+        <input matInput type="number" formControlName="cap">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Note</mat-label>
+        <input matInput type="text" formControlName="note">
+      </mat-form-field>
+
+      <div>
+        <button mat-button style="background-color: blueviolet;" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="pagamentoForm">
+    <form style="text-align: center;" [formGroup]="pagamentoForm">
+      <ng-template matStepLabel>Info pagamento</ng-template>
+
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cognome</mat-label>
+        <input matInput type="text" formControlName="cognome">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Num. carta</mat-label>
+        <input matInput type="number" formControlName="numCarta">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Exp</mat-label>
+        <input matInput type="text" formControlName="exp">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>CCV</mat-label>
+        <input matInput type="number" formControlName="ccv">
+      </mat-form-field>
+
+      <div>
+        <button mat-button style="background-color: blueviolet;" (click)="registraOrdine()">Fine</button>
+      </div>
+
+    </form>
+  </mat-step>
+
+</mat-stepper>
